@@ -41,12 +41,12 @@ ubuntu)
     dpkg-reconfigure -f noninteractive tzdata
     ;;
 centos)
+    # 设置编码格式
+    LC_ALL en_US.UTF-8
     # 设置时区
     TZ=Asia/Shanghai
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime
     echo $TZ > /etc/timezone
-    # 设置编码格式
-    LC_ALL en_US.UTF-8
     ;;
 alpine)
     # 设置时区
@@ -54,6 +54,8 @@ alpine)
     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
     echo "Asia/Shanghai" > /etc/timezone
     apk del tzdata
+    # 安装curl
+    apk add curl
     ;;
 *)
     echo unknow os $os, exit!
