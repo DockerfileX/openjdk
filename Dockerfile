@@ -13,5 +13,3 @@ LABEL description="集成了Open JDK的Alpine操作系统"
 
 COPY ./run.sh /bin/
 RUN chmod +x /bin/run.sh && /bin/run.sh
-
-
