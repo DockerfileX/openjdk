@@ -10,23 +10,14 @@
 2. OpenJDK 8
 3. TZ=Asia/Shanghai
 
-## 3. 编译
+## 3. 编译并上传镜像
 
 ```sh
-docker build -t nnzbz/openjdk:8 --build-arg VERSION=8 .
-docker build -t nnzbz/openjdk:11 --build-arg VERSION=11 .
-docker build -t nnzbz/openjdk:8-alpine --build-arg VERSION=8-alpine .
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:8 --build-arg VERSION=8 . --push
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:11 --build-arg VERSION=11 . --push
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:8-alpine --build-arg VERSION=8-alpine . --push
 # latest
-docker tag nnzbz/openjdk:8-alpine nnzbz/openjdk:latest
-```
-
-## 3. 上传镜像
-
-```sh
-docker push nnzbz/openjdk:8
-docker push nnzbz/openjdk:11
-docker push nnzbz/openjdk:8-alpine
-docker push nnzbz/openjdk:latest
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:latest --build-arg VERSION=8-alpine . --push
 ```
 
 ## 4. 创建并运行容器

@@ -1,7 +1,7 @@
 ARG VERSION
 
 # 基础镜像
-FROM openjdk:${VERSION}
+FROM --platform=${TARGETPLATFORM} openjdk:${VERSION}
 
 # 作者及邮箱
 # 镜像的作者和邮箱
