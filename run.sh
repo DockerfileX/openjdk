@@ -54,6 +54,13 @@ alpine)
     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
     echo "Asia/Shanghai" > /etc/timezone
     apk del tzdata
+    # 安装bash
+    apk update \
+            && apk upgrade \
+            && apk add --no-cache bash \
+            bash-doc \
+            bash-completion \
+            && rm -rf /var/cache/apk/*
     # 安装curl
     apk add curl
     ;;
