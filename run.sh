@@ -49,20 +49,20 @@ centos)
     echo $TZ > /etc/timezone
     ;;
 alpine)
+    # 更新
+    apk update && apk upgrade
     # 设置时区
     apk add tzdata
     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
     echo "Asia/Shanghai" > /etc/timezone
     apk del tzdata
     # 安装bash
-    apk update \
-            && apk upgrade \
-            && apk add --no-cache bash \
-            bash-doc \
-            bash-completion \
-            && rm -rf /var/cache/apk/*
-    # 安装curl
+    apk add --no-cache bash bash-doc bash-completion
     apk add curl
+    # 安装telnet
+    apk add busybox-extras
+    # 删除缓存
+    rm -rf /var/cache/apk/*
     ;;
 *)
     echo unknow os $os, exit!

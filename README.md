@@ -9,6 +9,9 @@
 1. Alpine操作系统
 2. OpenJDK 8
 3. TZ=Asia/Shanghai
+4. C.UTF-8
+5. curl和telnet
+6. arthas(在/usr/local目录下)
 
 ## 3. 编译并上传镜像
 

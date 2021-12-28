@@ -11,5 +11,8 @@ LABEL version="1.0.0"
 # 镜像的描述
 LABEL description="集成了Open JDK的Alpine操作系统"
 
+# copy arthas(从另一个镜像中复制，小技巧)
+COPY --from=hengyunabc/arthas:latest /opt/arthas /usr/local/arthas
+
 COPY ./run.sh /bin/
 RUN chmod +x /bin/run.sh && /bin/run.sh
