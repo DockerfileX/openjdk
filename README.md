@@ -17,8 +17,11 @@
 
 ```sh
 docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:8 --build-arg VERSION=8 . --push
-docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:11 --build-arg VERSION=11 . --push
 docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:8-alpine --build-arg VERSION=8-alpine . --push
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:11 --build-arg VERSION=11 . --push
+docker buildx build --platform linux/amd64 -t nnzbz/openjdk:18 --build-arg VERSION=18 . --push
+docker buildx build --platform linux/amd64 -t nnzbz/openjdk:18-alpine --build-arg VERSION=18-alpine . --push
+docker buildx build --platform linux/amd64 -t nnzbz/openjdk:19-alpine --build-arg VERSION=19-alpine . --push
 # latest
 docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:latest --build-arg VERSION=8-alpine . --push
 ```
