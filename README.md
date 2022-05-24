@@ -6,12 +6,11 @@
 
 ## 2. 特性
 
-1. OpenJDK 8
+1. OpenJDK 8-19
 2. TZ=Asia/Shanghai
 3. C.UTF-8
 4. curl和telnet
 5. arthas(在/usr/local/arthas目录下)
-6. SkyWalking Agent(在/usr/local/skywalking/agent目录下)
 
 ## 3. 编译并上传镜像
 
@@ -19,9 +18,12 @@
 docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:8 --build-arg VERSION=8 . --push
 docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:8-alpine --build-arg VERSION=8-alpine . --push
 docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:11 --build-arg VERSION=11 . --push
-docker buildx build --platform linux/amd64 -t nnzbz/openjdk:18 --build-arg VERSION=18 . --push
-docker buildx build --platform linux/amd64 -t nnzbz/openjdk:18-alpine --build-arg VERSION=18-alpine . --push
+# openjdk:18-alpine的原镜像不支持arm
+docker buildx build --platform linux/amd64 -t nnzbz/openjdk:18-alpine --build-arg VERSION=18-alpine --build-arg HTTP_PROXY=127.0.0.1:12345 --build-arg HTTPS_PROXY=127.0.0.1:12345 . --push
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:18 --build-arg VERSION=18 --build-arg HTTP_PROXY=127.0.0.1:12345 --build-arg HTTPS_PROXY=127.0.0.1:12345 . --push
+# openjdk:19-alpine的原镜像不支持arm
 docker buildx build --platform linux/amd64 -t nnzbz/openjdk:19-alpine --build-arg VERSION=19-alpine . --push
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:19 --build-arg VERSION=19 . --push
 # latest
 docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:latest --build-arg VERSION=8-alpine . --push
 ```
