@@ -27,6 +27,9 @@ getOs() {
 os=$(getOs)
 case $os in
 debian)
+    # apt-get update
+    # 安装vi
+    apt-get install vim
     TZ=Asia/Shanghai
     DEBIAN_FRONTEND=noninteractive
     ln -fs /usr/share/zoneinfo/${TZ} /etc/localtime
@@ -35,10 +38,14 @@ debian)
     rm -rf /var/lib/apt/lists/*
     ;;
 ubuntu)
+    # apt-get update
+    # 安装vi
+    apt-get install vim
     # 设置时区
     ln -sf /usr/share/zoneinfo/Asia/ShangHai /etc/localtime
     echo "Asia/Shanghai" > /etc/timezone
     dpkg-reconfigure -f noninteractive tzdata
+    rm -rf /var/lib/apt/lists/*
     ;;
 centos)
     # 设置编码格式
@@ -48,9 +55,17 @@ centos)
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime
     echo $TZ > /etc/timezone
     ;;
+ol)
+    cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+    echo "Asia/Shanghai" > /etc/timezone
+    # microdnf update -y
+    microdnf install vim -y
+    microdnf install telnet -y
+    microdnf install iputils -y
+    ;;
 alpine)
     # 更新
-    apk update && apk upgrade
+    # apk update && apk upgrade
     # 设置时区
     apk add tzdata
     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
@@ -61,6 +76,8 @@ alpine)
     apk add curl
     # 安装telnet
     apk add busybox-extras
+    # 安装vi
+    apk -U add vim
     # 删除缓存
     rm -rf /var/cache/apk/*
     ;;

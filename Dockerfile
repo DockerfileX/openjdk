@@ -16,13 +16,13 @@ LABEL version=${VERSION}
 # 镜像的描述
 LABEL description="集成了Open JDK的操作系统"
 
+# Arthas镜像不支持多平台，只能弃用这种方式
 # copy arthas(从另一个镜像中复制，小技巧)
-COPY --from=hengyunabc/arthas:latest /opt/arthas /usr/local/arthas
+#COPY --from=hengyunabc/arthas:latest /opt/arthas /usr/local/arthas
+COPY add/arthas /usr/local/arthas
 
 ENV http_proxy=${HTTP_PROXY}
 ENV https_proxy=${HTTPS_PROXY}
 
 COPY ./run.sh /bin/
-RUN chmod +x /bin/run.sh && /bin/run.sh
-
-RUN unset http_proxy && unset https_proxy
+RUN chmod +x /bin/run.sh && /bin/run.sh && unset http_proxy && unset https_proxy
