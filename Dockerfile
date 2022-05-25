@@ -1,7 +1,12 @@
 ARG VERSION
 
+FROM --platform=linux/amd64 hengyunabc/arthas:latest AS arthas
+
+# 如果这里不重复定义参数，后面会取不到参数的值
+ARG VERSION
+
 # 基础镜像
-FROM --platform=${TARGETPLATFORM} openjdk:${VERSION}
+FROM --platform=${TARGETPLATFORM} docker.io/openjdk:${VERSION}
 
 # 如果这里不重复定义参数，后面会取不到参数的值
 ARG VERSION
@@ -16,10 +21,8 @@ LABEL version=${VERSION}
 # 镜像的描述
 LABEL description="集成了Open JDK的操作系统"
 
-# Arthas镜像不支持多平台，只能弃用这种方式
 # copy arthas(从另一个镜像中复制，小技巧)
-#COPY --from=hengyunabc/arthas:latest /opt/arthas /usr/local/arthas
-COPY add/arthas /usr/local/arthas
+COPY --from=arthas /opt/arthas /usr/local/arthas
 
 ENV http_proxy=${HTTP_PROXY}
 ENV https_proxy=${HTTPS_PROXY}
