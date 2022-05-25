@@ -15,17 +15,17 @@
 ## 3. 编译并上传镜像
 
 ```sh
-docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:8 --build-arg VERSION=8 --build-arg HTTPS_PROXY=socks5://docker.for.mac.host.internal:12345  . --push
-docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:8-alpine --build-arg VERSION=8-alpine --build-arg HTTPS_PROXY=socks5://docker.for.mac.host.internal:12345  . --push
-docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:11 --build-arg VERSION=11 --build-arg HTTPS_PROXY=socks5://docker.for.mac.host.internal:12345  . --push
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:8 --build-arg VERSION=8 --build-arg HTTP_PROXY=socks5://docker.for.mac.host.internal:12345 --build-arg HTTPS_PROXY=socks5://docker.for.mac.host.internal:12345  . --push
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:8-alpine --build-arg VERSION=8-alpine --build-arg HTTP_PROXY=socks5://docker.for.mac.host.internal:12345 --build-arg HTTPS_PROXY=socks5://docker.for.mac.host.internal:12345  . --push
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:11 --build-arg VERSION=11 --build-arg HTTP_PROXY=socks5://docker.for.mac.host.internal:12345 --build-arg HTTPS_PROXY=socks5://docker.for.mac.host.internal:12345  . --push
 # openjdk:18-alpine的原镜像不支持arm
 docker buildx build --platform linux/amd64 -t nnzbz/openjdk:18-alpine --build-arg VERSION=18-alpine --build-arg HTTP_PROXY=socks5://docker.for.mac.host.internal:12345  --build-arg HTTPS_PROXY=socks5://docker.for.mac.host.internal:12345  . --push
 docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:18 --build-arg VERSION=18 --build-arg HTTP_PROXY=socks5://docker.for.mac.host.internal:12345  --build-arg HTTPS_PROXY=socks5://docker.for.mac.host.internal:12345  . --push
 # openjdk:19-alpine的原镜像不支持arm
-docker buildx build --platform linux/amd64 -t nnzbz/openjdk:19-alpine --build-arg VERSION=19-alpine --build-arg HTTPS_PROXY=socks5://docker.for.mac.host.internal:12345  . --push
-docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:19 --build-arg VERSION=19 --build-arg HTTPS_PROXY=socks5://docker.for.mac.host.internal:12345  . --push
+docker buildx build --platform linux/amd64 -t nnzbz/openjdk:19-alpine --build-arg VERSION=19-alpine --build-arg HTTP_PROXY=socks5://docker.for.mac.host.internal:12345 --build-arg HTTPS_PROXY=socks5://docker.for.mac.host.internal:12345  . --push
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:19 --build-arg VERSION=19 --build-arg HTTP_PROXY=socks5://docker.for.mac.host.internal:12345 --build-arg HTTPS_PROXY=socks5://docker.for.mac.host.internal:12345  . --push
 # latest
-docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:latest --build-arg VERSION=8-alpine --build-arg HTTPS_PROXY=socks5://docker.for.mac.host.internal:12345  . --push
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:latest --build-arg VERSION=8-alpine --build-arg HTTP_PROXY=socks5://docker.for.mac.host.internal:12345 --build-arg HTTPS_PROXY=socks5://docker.for.mac.host.internal:12345  . --push
 ```
 
 ## 4. 创建并运行容器
