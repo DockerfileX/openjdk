@@ -65,7 +65,9 @@ ol)
     ;;
 alpine)
     # 更新
-    # apk update && apk upgrade
+    apk update && apk upgrade
+    # 兼容libc库编译的程序
+    apk add libc6-compat
     # 设置时区
     apk add tzdata
     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime

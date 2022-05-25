@@ -6,7 +6,7 @@ FROM --platform=linux/amd64 hengyunabc/arthas:latest AS arthas
 ARG VERSION
 
 # 基础镜像
-FROM --platform=${TARGETPLATFORM} openjdk:${VERSION} AS openjdk
+FROM --platform=linux/amd64 openjdk:${VERSION}-alpine AS openjdk
 
 # 如果这里不重复定义参数，后面会取不到参数的值
 ARG VERSION
@@ -28,7 +28,7 @@ LABEL version=${VERSION}
 LABEL description="集成了Open JDK的Alpine操作系统"
 
 # copy openjdk(从另一个镜像中复制，小技巧)
-ENV JAVA_HOME=/usr/java/openjdk-${VERSION}
+ENV JAVA_HOME=/opt/openjdk-${VERSION}
 COPY --from=openjdk ${JAVA_HOME} ${JAVA_HOME}
 ENV PATH=${JAVA_HOME}/bin:${PATH}
 
