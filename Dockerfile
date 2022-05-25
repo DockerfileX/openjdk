@@ -6,7 +6,7 @@ FROM --platform=linux/amd64 hengyunabc/arthas:latest AS arthas
 ARG VERSION
 
 # 基础镜像
-FROM --platform=${TARGETPLATFORM} docker.io/openjdk:${VERSION}
+FROM --platform=${TARGETPLATFORM} openjdk:${VERSION}
 
 # 如果这里不重复定义参数，后面会取不到参数的值
 ARG VERSION
