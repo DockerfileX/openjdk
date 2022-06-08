@@ -20,7 +20,8 @@ getOs() {
         os=$(echo $os | tr '[A-Z]' '[a-z]')
     fi
 
-    echo $os
+    # 去除双引号返回
+    echo $os | sed 's/\"//g'
 }
 
 # 具体业务逻辑
@@ -59,7 +60,7 @@ ol)
     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
     echo "Asia/Shanghai" > /etc/timezone
     # microdnf update -y
-    microdnf install vim -y
+    # microdnf install vim -y
     microdnf install telnet -y
     microdnf install iputils -y
     ;;
