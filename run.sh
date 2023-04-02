@@ -63,6 +63,7 @@ ol)
     # microdnf install vim -y
     microdnf install telnet -y
     microdnf install iputils -y
+    microdnf install openssl -y
     ;;
 alpine)
     # 更新
@@ -79,6 +80,7 @@ alpine)
     apk add busybox-extras
     # 安装vi
     apk -U add vim
+    apk -U add openssl
     # 删除缓存
     rm -rf /var/cache/apk/*
     ;;

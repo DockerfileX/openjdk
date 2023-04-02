@@ -24,6 +24,10 @@ docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:18 --bui
 # openjdk:19-alpine的原镜像不支持arm
 docker buildx build --platform linux/amd64 -t nnzbz/openjdk:19-alpine --build-arg VERSION=19-alpine --build-arg HTTP_PROXY=socks5://docker.for.mac.host.internal:12345 --build-arg HTTPS_PROXY=socks5://docker.for.mac.host.internal:12345  . --push
 docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:19 --build-arg VERSION=19 --build-arg HTTP_PROXY=socks5://docker.for.mac.host.internal:12345 --build-arg HTTPS_PROXY=socks5://docker.for.mac.host.internal:12345  . --push
+# 目前没有openjdk:20-alpine的原镜像
+# openjdk:20-alpine的原镜像不支持arm
+#docker buildx build --platform linux/amd64 -t nnzbz/openjdk:20-alpine --build-arg VERSION=20-alpine --build-arg HTTP_PROXY=socks5://docker.for.mac.host.internal:12345 --build-arg HTTPS_PROXY=socks5://docker.for.mac.host.internal:12345 . --push
+docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:20 --build-arg VERSION=20 --build-arg HTTP_PROXY=socks5://docker.for.mac.host.internal:12345 --build-arg HTTPS_PROXY=socks5://docker.for.mac.host.internal:12345 . --push
 # latest
 docker buildx build --platform linux/arm64,linux/amd64 -t nnzbz/openjdk:latest --build-arg VERSION=8-alpine --build-arg HTTP_PROXY=socks5://docker.for.mac.host.internal:12345 --build-arg HTTPS_PROXY=socks5://docker.for.mac.host.internal:12345  . --push
 ```
