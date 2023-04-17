@@ -67,7 +67,7 @@ ol)
     ;;
 alpine)
     # 更新
-    # apk update && apk upgrade
+    apk update && apk upgrade
     # 设置时区
     apk add tzdata
     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
