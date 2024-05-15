@@ -62,8 +62,11 @@ ol)
     # microdnf update -y
     # microdnf install vim -y
     microdnf install telnet -y
-    microdnf install iputils -y
+    microdnf install iputils -y     # ping
     microdnf install openssl -y
+    # microdnf install net-tools -y # ifconfig
+    microdnf install iproute -y     # ip
+    microdnf install nc -y
     ;;
 alpine)
     # 更新
